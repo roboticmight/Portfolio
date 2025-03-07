@@ -1,0 +1,92 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="portfolio.css">
+    <title>Porfolio of Dmitriy Kononenko</title>
+</head>
+<body>
+    <header>
+        <h1>Resume</h1>   
+    </header>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="home.html">Home</a></li> 
+            <li><a href="resume.html">Resume</a></li> 
+            <li><a href="projects.html">My Projects</a></li>
+            <li><a href="awards.html">My awards</a></li> 
+            <li><a href="connect.html">Let's Stay In Touch</a></li> 
+        </ul>
+    </nav>
+
+    <div id="wrapper"></div>
+
+    
+
+    <main>
+        <h2>My Resume</h2>
+        <p>
+            This resume provides more information about my work history, education, skill sets, and more.
+            I will be updating this as time goes on and I gain more knowledge and experience in this particular work. <br>
+            
+        </p>
+
+        <iframe id="my_resume" src="resume.pdf" frameborder="0"></iframe>
+
+
+        <div>
+            <span class="portfolio">Contacts:</span> <br>
+            216 Home Ave. <br>
+            Elkhart, IN 46516<br>
+            <a id="mobile" href="tel:574-575-6026">574-575-6026</a> 
+            <br><br>
+        </div>
+        
+    </main>
+    <footer>
+        Copyright &copy; 2025 Profolio<br>
+        <a href="mailto:kononenko9268@gmail.com">kononenko9268@gmail.com</a>   
+    </footer>
+
+    <canvas id="matrix"></canvas>
+    <script>
+        const canvas = document.getElementById("matrix");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "#0f0"; // Green color
+            ctx.font = `${fontSize}px monospace`;
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters[Math.floor(Math.random() * letters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.95) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 50);
+
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>

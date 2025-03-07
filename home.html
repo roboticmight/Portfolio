@@ -1,0 +1,97 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="portfolio.css">
+    <title>Porfolio of Dmitriy Kononenko</title>
+</head>
+<body>
+    <header>
+        <h1>Portfolio of Dmitriy Kononenko</h1>   
+    </header>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="home.html">Home</a></li> 
+            <li><a href="resume.html">Resume</a></li> 
+            <li><a href="projects.html">My Projects</a></li>
+            <li><a href="awards.html">My awards</a></li> 
+            <li><a href="connect.html">Let's Stay In Touch</a></li> 
+        </ul>
+    </nav>
+
+    <div id="wrapper"></div>
+
+    <main>
+        <h2>About Me:</h2>
+        <p>
+            My name is Dmitriy Kononenko and I am a student of Ivy Tech
+            getting my degree in Cybersecurity and quality assurance program.
+            I have gained valuable experience along the journey in IT, programming
+            in languages such as python and website development, as well as 
+            working with platforms that are used in data analysis like nmap.
+            I was always passionate about studying and practicing computer sciences,
+            even when I was in highschool I had a passion for getting a computer sciences
+            degree, finally in the year of 2023 I was able to get back into school after
+            a long break and found out that I am doing amazing my first semester in IT
+            it gave me a push along the rest of semesters to keep going on this path.
+            Now fast forward to 2025 I am graduating in Spring this semester with my
+            Associates degree in Cybersecurity. <br> <br>
+
+        </p>
+
+        <canvas id="matrix"></canvas>
+    <script>
+        const canvas = document.getElementById("matrix");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "#0f0"; // Green color
+            ctx.font = `${fontSize}px monospace`;
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters[Math.floor(Math.random() * letters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.95) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 50);
+
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+
+        <div id="homehero" name="homehero"></div>
+
+        <div>
+            <span class="portfolio">Contacts:</span> <br>
+            <a id="mobile" href="tel:574-575-6026">574-575-6026</a> 
+            <br><br>
+        </div>
+        
+    </main>
+    <footer>
+        Copyright &copy; 2025 Profolio<br>
+        <a href="mailto:kononenko9268@gmail.com">kononenko9268@gmail.com</a>   
+    </footer>
+</body>
+</html>
